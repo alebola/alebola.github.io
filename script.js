@@ -213,3 +213,21 @@ function renderProjects(lang = "es") {
 createObserver();
 renderProjects("es");
 registerFadeIns(document);
+
+/* === MENÚ RESPONSIVE === */
+const menuToggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+const navLinks = document.querySelectorAll(".nav a");
+
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("active");
+  nav.classList.toggle("active");
+});
+
+// Cierra el menú al pulsar un enlace
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    menuToggle.classList.remove("active");
+    nav.classList.remove("active");
+  });
+});
