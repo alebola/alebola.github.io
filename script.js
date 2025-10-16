@@ -231,3 +231,5 @@ navLinks.forEach(link => {
     nav.classList.remove("active");
   });
 });
+
+document.getElementById("year").textContent = new Date().getFullYear();
