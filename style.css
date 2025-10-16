@@ -19,7 +19,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
-  background: rgba(10, 15, 31, 0.95);
+  background: rgba(10, 15, 31, 0.9);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -27,7 +27,7 @@ body {
 }
 
 .logo {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
@@ -44,7 +44,7 @@ body {
 
 .lang-switch {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .lang-switch button {
@@ -62,12 +62,22 @@ body {
 
 /* ===== HERO ===== */
 .hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 4rem 10%;
   background: #0a0f1f;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .hero-container {
@@ -77,17 +87,21 @@ body {
   gap: 3rem;
   flex-wrap: wrap;
   max-width: 1200px;
+  width: 100%;
+  padding: 5rem 10%;
+  position: relative;
+  z-index: 2;
 }
 
-/* Texto */
+/* === Texto === */
 .hero-text {
   flex: 1;
   min-width: 300px;
-  animation: fadeIn 1s ease forwards;
 }
 
 .intro {
   color: #aaa;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -102,17 +116,17 @@ body {
 }
 
 .hero-role {
+  font-size: 1.2rem;
   color: #ccc;
-  font-weight: 400;
   margin-bottom: 2rem;
 }
 
-/* Botones */
+/* === Botones CV === */
 .btn-group {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .button {
@@ -160,37 +174,13 @@ body {
   z-index: 1;
 }
 
-/* Imagen */
-.hero-img {
-  flex: 1;
-  min-width: 300px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-img img {
-  width: 280px;
-  border-radius: 20px;
-  z-index: 2;
-}
-
-.img-bg {
-  position: absolute;
-  width: 320px;
-  height: 360px;
-  background: linear-gradient(135deg, #00ffff55, #7b2ff755);
-  border-radius: 50%;
-  z-index: 1;
-  filter: blur(10px);
-}
-
-/* Redes Sociales Uiverse */
+/* === Redes sociales (Uiverse animadas) === */
 .social-links {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.8rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .social-btn {
@@ -199,7 +189,7 @@ body {
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: white;
+  background: #fff;
   border-radius: 10px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -217,23 +207,167 @@ body {
   width: 0;
   overflow: hidden;
   color: #111;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   margin-left: 0;
   transition: width 0.3s ease, margin-left 0.3s ease;
 }
 
 .social-btn:hover {
-  width: 140px;
+  width: 230px;
   border-radius: 8px;
 }
 
 .social-btn:hover span {
-  width: 80px;
+  width: 180px;
   margin-left: 8px;
 }
 
 /* Icon colors */
 #gmail svg path:first-child { fill: #EA4335; }
 #linkedin svg path[fill="#0A66C2"] { fill: #0A66C2; }
-#github
+#github svg { fill: #333; }
+
+/* === Imagen Hero === */
+.hero-img {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-img img {
+  width: 280px;
+  border-radius: 20px;
+  z-index: 2;
+  position: relative;
+}
+
+.img-bg {
+  position: absolute;
+  width: 320px;
+  height: 360px;
+  background: linear-gradient(135deg, #00ffff55, #7b2ff755);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  z-index: 1;
+  filter: blur(10px);
+}
+
+/* ===== SECCIONES ===== */
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 4rem 5%;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #00ffff;
+  text-align: center;
+}
+
+.section p {
+  line-height: 1.6;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ===== SKILLS ===== */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.skills span {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.skills span:hover {
+  background: linear-gradient(135deg, #00ffff, #7b2ff7);
+  color: #0a0f1f;
+}
+
+/* ===== PROJECTS ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 12px rgba(123, 47, 247, 0.4);
+}
+
+.project-card h3 {
+  color: #00ffff;
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.project-card a {
+  color: #7b2ff7;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  text-align: center;
+}
+
+.contact .social-links {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #888;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 3rem 5%;
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .hero-img img {
+    width: 200px;
+  }
+}

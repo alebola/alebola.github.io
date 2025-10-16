@@ -26,53 +26,33 @@
 
   <!-- ===== HERO ===== -->
   <section id="hero" class="hero">
+    <canvas id="particles"></canvas>
     <div class="hero-container">
-      <!-- Texto -->
       <div class="hero-text">
         <p class="intro" data-key="hero-intro">Hola, mi nombre es</p>
-        <h1 class="hero-name">
-          Alejandro <span>Bolaños García</span>
-        </h1>
-        <h3 class="hero-role" data-key="hero-role">
-          Científico de Datos e Ingeniero de Machine Learning
-        </h3>
+        <h1 class="hero-name">Alejandro <span>Bolaños García</span></h1>
+        <h3 class="hero-role" data-key="hero-role">Científico de Datos e Ingeniero de Machine Learning</h3>
 
-        <!-- Botones CV -->
         <div class="btn-group">
-          <a href="assets/CV_Alejandro_Bolaños_es.pdf" download class="button">
-            <span class="button-content">📄 CV Español</span>
-          </a>
-          <a href="assets/CV_Alejandro_Bolaños_en.pdf" download class="button">
-            <span class="button-content">📄 CV English</span>
-          </a>
+          <a href="assets/CV_Alejandro_Bolaños_es.pdf" download class="button"><span class="button-content">📄 CV Español</span></a>
+          <a href="assets/CV_Alejandro_Bolaños_en.pdf" download class="button"><span class="button-content">📄 CV English</span></a>
         </div>
 
-        <!-- Redes Sociales -->
         <div class="social-links">
           <a href="mailto:alebolanosgarcia@gmail.com" class="social-btn" id="gmail">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#EA4335" d="M4 10l20 14L44 10v28H4z"/>
-              <path fill="#FBBC05" d="M44 10l-20 14L4 10z"/>
-            </svg>
-            <span>Gmail</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#EA4335" d="M4 10l20 14L44 10v28H4z"/><path fill="#FBBC05" d="M44 10l-20 14L4 10z"/></svg>
+            <span>alebolanosgarcia@gmail.com</span>
           </a>
           <a href="https://linkedin.com/in/alejandro-bolaños-garcía" target="_blank" class="social-btn" id="linkedin">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#0A66C2" d="M42 4H6v40h36V4z"/>
-              <path fill="#fff" d="M14 19h6v18h-6zM17 15a3 3 0 110-6 3 3 0 010 6zM22 19h5v3h.1c.8-1.5 2.8-3 5.9-3 6.3 0 7.5 4.1 7.5 9.4V37h-6v-8c0-1.9 0-4.3-2.6-4.3-2.6 0-3 2-3 4.1V37h-6z"/>
-            </svg>
-            <span>LinkedIn</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#0A66C2" d="M42 4H6v40h36V4z"/><path fill="#fff" d="M14 19h6v18h-6zM17 15a3 3 0 110-6 3 3 0 010 6zM22 19h5v3h.1c.8-1.5 2.8-3 5.9-3 6.3 0 7.5 4.1 7.5 9.4V37h-6v-8c0-1.9 0-4.3-2.6-4.3-2.6 0-3 2-3 4.1V37h-6z"/></svg>
+            <span>/alejandro-bolaños-garcía</span>
           </a>
           <a href="https://github.com/alebola" target="_blank" class="social-btn" id="github">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#333" d="M24 4a20 20 0 00-6.3 39c1 .2 1.3-.4 1.3-.9v-3.5c-5.3 1.1-6.4-2.6-6.4-2.6-.9-2.3-2.2-3-2.2-3-1.8-1.2.1-1.1.1-1.1 2 .1 3.1 2.1 3.1 2.1 1.8 3.1 4.8 2.2 6 1.7.2-1.3.7-2.2 1.2-2.7-4.2-.5-8.6-2.1-8.6-9.3 0-2.1.8-3.9 2-5.2-.2-.5-.9-2.5.2-5.1 0 0 1.6-.5 5.2 2 1.5-.4 3-.6 4.5-.6s3 .2 4.5.6c3.6-2.5 5.2-2 5.2-2 1.1 2.6.4 4.6.2 5.1 1.2 1.3 2 3.1 2 5.2 0 7.2-4.4 8.8-8.6 9.3.7.6 1.3 1.8 1.3 3.6v5.3c0 .5.3 1.1 1.3.9A20 20 0 0024 4z"/>
-            </svg>
-            <span>GitHub</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#333" d="M24 4a20 20 0 00-6.3 39c1 .2 1.3-.4 1.3-.9v-3.5c-5.3 1.1-6.4-2.6-6.4-2.6-.9-2.3-2.2-3-2.2-3-1.8-1.2.1-1.1.1-1.1 2 .1 3.1 2.1 3.1 2.1 1.8 3.1 4.8 2.2 6 1.7.2-1.3.7-2.2 1.2-2.7-4.2-.5-8.6-2.1-8.6-9.3 0-2.1.8-3.9 2-5.2-.2-.5-.9-2.5.2-5.1 0 0 1.6-.5 5.2 2 1.5-.4 3-.6 4.5-.6s3 .2 4.5.6c3.6-2.5 5.2-2 5.2-2 1.1 2.6.4 4.6.2 5.1 1.2 1.3 2 3.1 2 5.2 0 7.2-4.4 8.8-8.6 9.3.7.6 1.3 1.8 1.3 3.6v5.3c0 .5.3 1.1 1.3.9A20 20 0 0024 4z"/></svg>
+            <span>/alebola</span>
           </a>
         </div>
       </div>
-
-      <!-- Imagen -->
       <div class="hero-img">
         <div class="img-bg"></div>
         <img src="assets/profile.jpg" alt="Alejandro Bolaños García" />
@@ -80,10 +60,43 @@
     </div>
   </section>
 
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <h2 data-key="about-title">Sobre mí</h2>
+    <p data-key="about-desc">
+      Soy graduado en Ciencia e Ingeniería de Datos, apasionado por la inteligencia artificial, el aprendizaje automático y las soluciones basadas en datos. Busco aplicar mis conocimientos en entornos reales y seguir creciendo profesionalmente.
+    </p>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section">
+    <h2 data-key="skills-title">Habilidades</h2>
+    <div class="skills">
+      <span>Python</span><span>R</span><span>SQL</span><span>Java</span><span>PyTorch</span>
+      <span>scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Docker</span>
+      <span>Git</span><span>Firebase</span><span>MongoDB</span><span>Teamwork</span><span>Adaptability</span>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section">
+    <h2 data-key="projects-title">Proyectos Destacados</h2>
+    <div id="projects-grid" class="projects-grid"></div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section contact">
+    <h2 data-key="contact-title">Contacto</h2>
+    <p data-key="contact-text">Puedes encontrarme en mis redes o escribirme directamente:</p>
+    <div class="social-links">
+      <a href="mailto:alebolanosgarcia@gmail.com" class="social-btn" id="gmail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#EA4335" d="M4 10l20 14L44 10v28H4z"/><path fill="#FBBC05" d="M44 10l-20 14L4 10z"/></svg><span>alebolanosgarcia@gmail.com</span></a>
+      <a href="https://linkedin.com/in/alejandro-bolaños-garcía" target="_blank" class="social-btn" id="linkedin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#0A66C2" d="M42 4H6v40h36V4z"/><path fill="#fff" d="M14 19h6v18h-6zM17 15a3 3 0 110-6 3 3 0 010 6zM22 19h5v3h.1c.8-1.5 2.8-3 5.9-3 6.3 0 7.5 4.1 7.5 9.4V37h-6v-8c0-1.9 0-4.3-2.6-4.3-2.6 0-3 2-3 4.1V37h-6z"/></svg><span>/alejandro-bolaños-garcía</span></a>
+      <a href="https://github.com/alebola" target="_blank" class="social-btn" id="github"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#333" d="M24 4a20 20 0 00-6.3 39c1 .2 1.3-.4 1.3-.9v-3.5c-5.3 1.1-6.4-2.6-6.4-2.6-.9-2.3-2.2-3-2.2-3-1.8-1.2.1-1.1.1-1.1 2 .1 3.1 2.1 3.1 2.1 1.8 3.1 4.8 2.2 6 1.7.2-1.3.7-2.2 1.2-2.7-4.2-.5-8.6-2.1-8.6-9.3 0-2.1.8-3.9 2-5.2-.2-.5-.9-2.5.2-5.1 0 0 1.6-.5 5.2 2 1.5-.4 3-.6 4.5-.6s3 .2 4.5.6c3.6-2.5 5.2-2 5.2-2 1.1 2.6.4 4.6.2 5.1 1.2 1.3 2 3.1 2 5.2 0 7.2-4.4 8.8-8.6 9.3.7.6 1.3 1.8 1.3 3.6v5.3c0 .5.3 1.1 1.3.9A20 20 0 0024 4z"/></svg><span>/alebola</span></a>
+    </div>
+  </section>
+
   <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    © 2025 Alejandro Bolaños García
-  </footer>
+  <footer class="footer">© 2025 Alejandro Bolaños García</footer>
 
   <script src="script.js"></script>
 </body>
