@@ -185,19 +185,50 @@ function renderProjects(lang = "es") {
 // Render inicial con idioma español
 switchLanguage("es");
 
-// === EFECTO FADE-IN EN SCROLL (optimizado con IntersectionObserver) ===
-const fadeElements = document.querySelectorAll(".fade-in");
+/* === FADE-IN con IntersectionObserver === */
+let observer; // referencia global
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // deja de observar después de animar
-      }
-    });
-  },
-  { threshold: 0.2 } // se activa cuando el 20% del elemento es visible
-);
+function createObserver() {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target); 
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+}
 
-fadeElements.forEach((el) => observer.observe(el));
+function registerFadeIns(root = document) {
+  const pending = root.querySelectorAll(".fade-in:not([data-observed])");
+  pending.forEach((el) => {
+    el.setAttribute("data-observed", "true");
+    observer.observe(el);
+  });
+}
+
+function renderProjects(lang = "es") {
+  const container = document.getElementById("projects-grid");
+  container.innerHTML = "";
+  projectsData[lang].forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "project-card fade-in"; 
+    card.innerHTML = `
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <a href="https://github.com/alebola/${p.name}" target="_blank">
+        ${lang === "en" ? "View on GitHub →" : "Ver en GitHub →"}
+      </a>
+    `;
+    container.appendChild(card);
+  });
+  // registra las nuevas tarjetas para que se animen
+  registerFadeIns(container);
+}
+
+/* Inicialización del observer + registro inicial */
+createObserver();
+registerFadeIns(document);
