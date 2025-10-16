@@ -170,4 +170,24 @@ function renderProjects(lang = "es") {
   });
 }
 
+// Render inicial con idioma español
 renderProjects("es");
+switchLanguage("es");
+
+/* === EFECTO FADE-IN EN SCROLL === */
+const fadeElements = document.querySelectorAll(
+  ".section, .project-card, .hero-text, .hero-img"
+);
+
+function handleScrollAnimations() {
+  const triggerBottom = window.innerHeight * 0.85;
+  fadeElements.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < triggerBottom) {
+      el.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", handleScrollAnimations);
+window.addEventListener("load", handleScrollAnimations);

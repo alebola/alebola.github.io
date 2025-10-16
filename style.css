@@ -371,3 +371,54 @@ body {
     width: 200px;
   }
 }
+
+/* === SKILLS GRID (dos columnas) === */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.skills-col h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-align: left;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skills span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  color: #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.skills span:hover {
+  background: linear-gradient(135deg, #00ffff, #7b2ff7);
+  color: #0a0f1f;
+  box-shadow: 0 0 10px rgba(123, 47, 247, 0.6);
+}
+
+
+/* === Animaciones al hacer scroll === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
