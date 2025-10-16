@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alejandro Bolaños García | Data Scientist & ML Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1 class="logo">Alejandro Bolaños García</h1>
+    <nav class="nav">
+      <a href="#about" data-key="nav-about">Sobre mí</a>
+      <a href="#skills" data-key="nav-skills">Habilidades</a>
+      <a href="#projects" data-key="nav-projects">Proyectos</a>
+      <a href="#contact" data-key="nav-contact">Contacto</a>
+    </nav>
+    <div class="lang-switch">
+      <button id="lang-es">🇪🇸</button>
+      <button id="lang-en">🇬🇧</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <h2 data-key="hero-title">Científico de Datos e Ingeniero de Machine Learning</h2>
+      <p data-key="hero-desc">Apasionado por la inteligencia artificial, el aprendizaje profundo y las soluciones basadas en datos.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn" data-key="hero-projects">Ver proyectos</a>
+        <div class="dropdown">
+          <button class="btn" id="cvButton" data-key="hero-cv">Descargar CV</button>
+          <div class="dropdown-content">
+            <a href="assets/CV_Alejandro_Bolaños_es.pdf" download>🇪🇸 Español</a>
+            <a href="assets/CV_Alejandro_Bolaños_en.pdf" download>🇬🇧 English</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <h2 data-key="about-title">Sobre mí</h2>
+    <p data-key="about-text">
+      Graduado en Ciencia e Ingeniería de Datos (ULPGC), apasionado por la inteligencia artificial, el aprendizaje automático y las soluciones impulsadas por datos. Busco seguir desarrollando mi carrera profesional en el campo de la ciencia de datos y la IA.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <h2 data-key="skills-title">Habilidades</h2>
+    <div class="skills">
+      <span>Python</span><span>R</span><span>SQL</span><span>PyTorch</span><span>scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Spark</span><span>Flask</span><span>Docker</span><span>Firebase</span><span>Git</span><span>Linux</span>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2 data-key="projects-title">Proyectos Destacados</h2>
+    <div id="projects-container" class="projects-grid"></div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <h2 data-key="contact-title">Contacto</h2>
+    <p><a href="mailto:alebolanosgarcia@gmail.com">alebolanosgarcia@gmail.com</a></p>
+    <p><a href="https://linkedin.com/in/alejandro-bolaños-garcía" target="_blank">LinkedIn</a> · <a href="https://github.com/alebola" target="_blank">GitHub</a></p>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Alejandro Bolaños García</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
