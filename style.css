@@ -423,7 +423,7 @@ body {
   transform: translateY(0);
 }
 
-/* === HEADER RESPONSIVE === */
+/* === HEADER === */
 .header {
   position: fixed;
   top: 0;
@@ -435,7 +435,6 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   z-index: 1000;
-  transition: all 0.3s ease;
 }
 
 .logo {
@@ -444,6 +443,7 @@ body {
   color: #fff;
 }
 
+/* Nav base */
 .nav {
   display: flex;
   gap: 2rem;
@@ -461,7 +461,7 @@ body {
   color: #00ffff;
 }
 
-/* idioma */
+/* Selector de idioma */
 .lang-switch {
   display: flex;
   gap: 0.5rem;
@@ -477,6 +477,11 @@ body {
 
 .lang-switch button:hover {
   color: #00ffff;
+}
+
+/* Ocultamos versión móvil por defecto */
+.mobile-lang {
+  display: none;
 }
 
 /* === MENÚ HAMBURGUESA === */
@@ -496,7 +501,7 @@ body {
   transition: all 0.3s;
 }
 
-/* Estado activo del botón */
+/* Animación del icono */
 .menu-toggle.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -507,7 +512,7 @@ body {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* === MÓVIL === */
+/* === MODO MÓVIL === */
 @media (max-width: 768px) {
   .header {
     padding: 0.8rem 1.2rem;
@@ -530,7 +535,7 @@ body {
     background: rgba(10, 15, 31, 0.98);
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.8rem;
     padding: 2rem 0;
     transform: translateY(-120%);
     transition: transform 0.3s ease-in-out;
@@ -544,9 +549,15 @@ body {
     font-size: 1.1rem;
   }
 
-  .lang-switch {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
+  /* Versión idioma dentro del menú */
+  .mobile-lang {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* Ocultar selector de idioma del escritorio */
+  .desktop-lang {
+    display: none;
   }
 }
