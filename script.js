@@ -183,15 +183,9 @@ function renderProjects(lang = "es") {
 }
 
 // Render inicial con idioma español
-renderProjects("es");
 switchLanguage("es");
 
-/* === EFECTO FADE-IN EN SCROLL === */
-const fadeElements = document.querySelectorAll(
-  ".section, .project-card, .hero-text, .hero-img"
-);
-
-/* === EFECTO FADE-IN EN SCROLL (optimizado con IntersectionObserver) === */
+// === EFECTO FADE-IN EN SCROLL (optimizado con IntersectionObserver) ===
 const fadeElements = document.querySelectorAll(".fade-in");
 
 const observer = new IntersectionObserver(
@@ -199,7 +193,7 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // Deja de observar después de animar
+        observer.unobserve(entry.target); // deja de observar después de animar
       }
     });
   },
@@ -207,7 +201,3 @@ const observer = new IntersectionObserver(
 );
 
 fadeElements.forEach((el) => observer.observe(el));
-
-
-window.addEventListener("scroll", handleScrollAnimations);
-window.addEventListener("load", handleScrollAnimations);
