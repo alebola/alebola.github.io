@@ -12,6 +12,8 @@ const translations = {
     "about-desc":
       "Soy graduado en Ciencia e Ingeniería de Datos, apasionado por la inteligencia artificial, el aprendizaje automático y las soluciones basadas en datos. Busco aplicar mis conocimientos en entornos reales y seguir creciendo profesionalmente.",
     "skills-title": "Habilidades",
+    "tech-skills-title": "Habilidades Técnicas",
+    "soft-skills-title": "Habilidades Blandas",
     "projects-title": "Proyectos Destacados",
     "contact-title": "Contacto",
     "contact-text": "Puedes encontrarme en mis redes o escribirme directamente:"
@@ -28,12 +30,15 @@ const translations = {
     "about-desc":
       "I am a Data Science and Engineering graduate passionate about artificial intelligence, machine learning, and data-driven solutions. I aim to apply my skills in real-world settings while continuing to grow professionally.",
     "skills-title": "Skills",
+    "tech-skills-title": "Technical Skills",
+    "soft-skills-title": "Soft Skills",
     "projects-title": "Featured Projects",
     "contact-title": "Contact",
     "contact-text": "You can find me on my social networks or write to me directly:"
   }
 };
 
+// Función de cambio de idioma
 function switchLanguage(lang) {
   document.querySelectorAll("[data-key]").forEach((el) => {
     const key = el.getAttribute("data-key");
@@ -41,6 +46,7 @@ function switchLanguage(lang) {
       el.textContent = translations[lang][key];
     }
   });
+  renderProjects(lang);
 }
 
 document.getElementById("es-btn").addEventListener("click", () => switchLanguage("es"));
@@ -68,11 +74,10 @@ function initParticles() {
 
 function animateParticles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "rgba(255,255,255,0.8)";
   particlesArray.forEach((p) => {
     p.x += p.speedX;
     p.y += p.speedY;
-
     if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
     if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
 
@@ -93,32 +98,76 @@ window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 animateParticles();
 
-/* === CARGA AUTOMÁTICA DE PROYECTOS GITHUB === */
-const username = "alebola";
-const projectContainer = document.getElementById("projects-grid");
+/* === PROYECTOS MANUALES (BILINGÜES) === */
+const projectsData = {
+  es: [
+    {
+      name: "rag-youtube",
+      desc: "Indexa videos de YouTube, realiza preguntas en lenguaje natural y obtén respuestas concisas con citas directas enlazadas al minuto exacto. Desarrollado con Streamlit, Pinecone y un pipeline RAG multilingüe.",
+    },
+    {
+      name: "handball-penalty-prediction",
+      desc: "Predicción de lanzamientos vs fintas en penaltis de balonmano mediante aprendizaje profundo en embeddings de video (HAR). Incluye preprocesamiento, modelos secuenciales (LSTM, GRU, TCN, Transformer) y un script final con el mejor modelo Transformer + SMOTE.",
+    },
+    {
+      name: "InclusIA",
+      desc: "Aplicación multiplataforma para detectar y corregir sesgos de género en texto, integrando Firebase (Functions, Firestore, Storage) con Gemini mediante Firebase Extensions.",
+    },
+    {
+      name: "nba-player-stats-analysis",
+      desc: "Análisis exploratorio de estadísticas de jugadores de la NBA (temporada 2021–2022) con R. Incluye procesamiento de datos, visualizaciones avanzadas (barras, histogramas, gráficos de radar) e insights de analítica deportiva.",
+    },
+    {
+      name: "PLN-Practicas",
+      desc: "Colección de prácticas de Procesamiento del Lenguaje Natural (PLN) sobre representación de texto (BoW, TF-IDF), clasificación de texto, embeddings (GloVe), modelos seq2seq con atención y transformers con self-attention. Implementado en Python con PyTorch, torchtext, spaCy y FastText.",
+    },
+    {
+      name: "f1-weather-rec-system",
+      desc: "Proyecto full-stack combinando Java (procesamiento + MongoDB) y Python (Flask API + cliente PyQt) para analizar datos de carreras de F1 con condiciones climáticas. Incluye integraciones, consultas y visualizaciones sobre rendimiento en diferentes climas.",
+    },
+  ],
+  en: [
+    {
+      name: "rag-youtube",
+      desc: "Index YouTube videos, ask natural language questions, and get concise answers with direct citations linked to the exact minute. Built with Streamlit, Pinecone, and a multilingual RAG pipeline.",
+    },
+    {
+      name: "handball-penalty-prediction",
+      desc: "Prediction of shots vs feints in handball penalty kicks using deep learning on video embeddings (HAR). Includes preprocessing, multiple sequence models (LSTM, GRU, TCN, Transformer) and a final script with the best-performing Transformer + SMOTE approach.",
+    },
+    {
+      name: "InclusIA",
+      desc: "Cross-platform app to detect and correct gender bias in text, integrating Firebase (Functions, Firestore, Storage) with Gemini via Firebase Extensions.",
+    },
+    {
+      name: "nba-player-stats-analysis",
+      desc: "Exploratory analysis of NBA player statistics (2021–2022 season) using R. Includes data wrangling, advanced visualizations (bar plots, histograms, radar charts), and sports analytics insights.",
+    },
+    {
+      name: "PLN-Practicas",
+      desc: "Collection of Natural Language Processing (NLP) assignments covering text representation (BoW, TF-IDF), text classification, word embeddings (GloVe), seq2seq models with attention, and transformer-based self-attention with masking. Implemented in Python with PyTorch, torchtext, spaCy, and FastText.",
+    },
+    {
+      name: "f1-weather-rec-system",
+      desc: "Full-stack project combining Java (data processing + MongoDB) and Python (Flask API + PyQt client) to analyze Formula 1 race data with weather conditions. Includes integrations, queries, and visualizations for race performance under different climates.",
+    },
+  ],
+};
 
-async function fetchPinnedRepos() {
-  try {
-    const response = await fetch(`https://gh-pinned-repos.egoist.dev/?username=${username}`);
-    const repos = await response.json();
-
-    repos.forEach((repo) => {
-      const card = document.createElement("div");
-      card.classList.add("project-card");
-
-      card.innerHTML = `
-        <h3>${repo.repo}</h3>
-        <p>${repo.description || "Sin descripción"}</p>
-        <a href="https://github.com/${username}/${repo.repo}" target="_blank">Ver en GitHub →</a>
-      `;
-
-      projectContainer.appendChild(card);
-    });
-  } catch (error) {
-    console.error("Error al cargar los repositorios:", error);
-    projectContainer.innerHTML =
-      "<p style='text-align:center;color:#999;'>No se pudieron cargar los proyectos.</p>";
-  }
+// Renderizar proyectos
+function renderProjects(lang = "es") {
+  const container = document.getElementById("projects-grid");
+  container.innerHTML = "";
+  projectsData[lang].forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "project-card";
+    card.innerHTML = `
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <a href="https://github.com/alebola/${p.name}" target="_blank">Ver en GitHub →</a>
+    `;
+    container.appendChild(card);
+  });
 }
 
-fetchPinnedRepos();
+renderProjects("es");
