@@ -14,6 +14,12 @@ const translations = {
     "skills-title": "Habilidades",
     "tech-skills-title": "Habilidades Técnicas",
     "soft-skills-title": "Habilidades Blandas",
+    "soft1": "Comunicación",
+    "soft2": "Trabajo en equipo",
+    "soft3": "Liderazgo",
+    "soft4": "Pensamiento analítico",
+    "soft5": "Adaptabilidad",
+    "soft6": "Resolución de problemas",
     "projects-title": "Proyectos Destacados",
     "contact-title": "Contacto",
     "contact-text": "Puedes encontrarme en mis redes o escribirme directamente:"
@@ -32,6 +38,12 @@ const translations = {
     "skills-title": "Skills",
     "tech-skills-title": "Technical Skills",
     "soft-skills-title": "Soft Skills",
+    "soft1": "Communication",
+    "soft2": "Teamwork",
+    "soft3": "Leadership",
+    "soft4": "Analytical thinking",
+    "soft5": "Adaptability",
+    "soft6": "Problem solving",
     "projects-title": "Featured Projects",
     "contact-title": "Contact",
     "contact-text": "You can find me on my social networks or write to me directly:"
@@ -179,15 +191,23 @@ const fadeElements = document.querySelectorAll(
   ".section, .project-card, .hero-text, .hero-img"
 );
 
-function handleScrollAnimations() {
-  const triggerBottom = window.innerHeight * 0.85;
-  fadeElements.forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < triggerBottom) {
-      el.classList.add("visible");
-    }
-  });
-}
+/* === EFECTO FADE-IN EN SCROLL (optimizado con IntersectionObserver) === */
+const fadeElements = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // Deja de observar después de animar
+      }
+    });
+  },
+  { threshold: 0.2 } // se activa cuando el 20% del elemento es visible
+);
+
+fadeElements.forEach((el) => observer.observe(el));
+
 
 window.addEventListener("scroll", handleScrollAnimations);
 window.addEventListener("load", handleScrollAnimations);
