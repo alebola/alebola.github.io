@@ -166,27 +166,8 @@ const projectsData = {
   ],
 };
 
-// Renderizar proyectos
-function renderProjects(lang = "es") {
-  const container = document.getElementById("projects-grid");
-  container.innerHTML = "";
-  projectsData[lang].forEach((p) => {
-    const card = document.createElement("div");
-    card.className = "project-card";
-    card.innerHTML = `
-      <h3>${p.name}</h3>
-      <p>${p.desc}</p>
-      <a href="https://github.com/alebola/${p.name}" target="_blank">Ver en GitHub →</a>
-    `;
-    container.appendChild(card);
-  });
-}
-
-// Render inicial con idioma español
-switchLanguage("es");
-
 /* === FADE-IN con IntersectionObserver === */
-let observer; // referencia global
+let observer;
 
 function createObserver() {
   observer = new IntersectionObserver(
@@ -194,7 +175,7 @@ function createObserver() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target); 
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -215,7 +196,7 @@ function renderProjects(lang = "es") {
   container.innerHTML = "";
   projectsData[lang].forEach((p) => {
     const card = document.createElement("div");
-    card.className = "project-card fade-in"; 
+    card.className = "project-card fade-in";
     card.innerHTML = `
       <h3>${p.name}</h3>
       <p>${p.desc}</p>
@@ -225,10 +206,10 @@ function renderProjects(lang = "es") {
     `;
     container.appendChild(card);
   });
-  // registra las nuevas tarjetas para que se animen
   registerFadeIns(container);
 }
 
-/* Inicialización del observer + registro inicial */
+/* Inicialización del observer + render inicial */
 createObserver();
+renderProjects("es");
 registerFadeIns(document);
