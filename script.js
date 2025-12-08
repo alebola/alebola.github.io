@@ -263,19 +263,20 @@ function typeEffect(element, text, delay = 50, callback) {
 
 window.addEventListener("load", () => {
   const intro = document.querySelector("[data-key='hero-intro']");
-  const name = document.querySelector(".hero-name");
+  const firstName = document.querySelector(".first-name");
+  const lastName = document.querySelector(".last-name");
   const role = document.querySelector("[data-key='hero-role']");
 
   const introText = intro?.textContent.trim() || "";
-  const nameText = name?.textContent.trim() || "";
+  const firstNameText = firstName?.textContent.trim() || "";
   const roleText = role?.textContent.trim() || "";
 
   intro.textContent = "";
-  name.textContent = "";
+  firstName.textContent = "";
   role.textContent = "";
 
   typeEffect(intro, introText, 45, () => {
-    typeEffect(name, nameText, 35, () => {
+    typeEffect(firstName, firstNameText, 35, () => {
       typeEffect(role, roleText, 25);
     });
   });
