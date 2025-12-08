@@ -480,6 +480,12 @@ body {
   color: #00ffff;
 }
 
+.lang-btn.active {
+  color: #00ffff;
+  font-weight: 700;
+  text-decoration: underline; /* opcional, solo si quieres remarcarlo más */
+}
+
 /* Ocultamos versión móvil por defecto */
 .mobile-lang {
   display: none;
