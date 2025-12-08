@@ -221,6 +221,7 @@ function renderProjects(lang = "es") {
 createObserver();
 renderProjects("es");
 registerFadeIns(document);
+document.querySelectorAll('.lang-btn[data-lang="es"]').forEach(b => b.classList.add('active'));
 
 /* === MENÚ RESPONSIVE === */
 const menuToggle = document.getElementById("menu-toggle");
