@@ -250,7 +250,16 @@ function typeEffect(element, text, delay = 50, callback) {
   let i = 0;
   function typing() {
     if (i < text.length) {
-      element.textContent += text.charAt(i);
+      if (element === name && text.startsWith("Alejandro")) {
+        if (i >= "Alejandro ".length) {
+          element.innerHTML += `<span style="color:#00ffff">${text.charAt(i)}</span>`;
+        } else {
+          element.innerHTML += text.charAt(i);
+        }
+      } else {
+        element.textContent += text.charAt(i);
+      }
+
       i++;
       setTimeout(typing, delay);
     } else {
