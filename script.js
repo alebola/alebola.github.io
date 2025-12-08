@@ -243,8 +243,8 @@ navLinks.forEach(link => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* === ANIMACIÓN HERO (typing effect) === */
-function typeEffect(element, text, delay = 50) {
+/* === ANIMACIÓN HERO (efecto escritura completo y limpio) === */
+function typeEffect(element, text, delay = 50, callback) {
   element.textContent = "";
   let i = 0;
   function typing() {
@@ -252,6 +252,8 @@ function typeEffect(element, text, delay = 50) {
       element.textContent += text.charAt(i);
       i++;
       setTimeout(typing, delay);
+    } else if (callback) {
+      setTimeout(callback, 500);
     }
   }
   typing();
@@ -259,11 +261,42 @@ function typeEffect(element, text, delay = 50) {
 
 window.addEventListener("load", () => {
   const intro = document.querySelector("[data-key='hero-intro']");
+  const name = document.querySelector(".hero-name");
   const role = document.querySelector("[data-key='hero-role']");
 
-  if (intro && role) {
-    typeEffect(intro, intro.textContent, 45);
-    setTimeout(() => typeEffect(role, role.textContent, 30), 1200);
+  // Guardamos los textos originales
+  const introText = intro?.textContent.trim() || "";
+  const nameText = name?.textContent.trim() || "";
+  const roleText = role?.textContent.trim() || "";
+
+  // Limpiamos el contenido inicial para que empiece vacío
+  if (intro) intro.textContent = "";
+  if (name) name.textContent = "";
+  if (role) role.textContent = "";
+
+  // Efecto secuencial: intro → nombre → rol
+  if (intro && name && role) {
+    typeEffect(intro, introText, 45, () => {
+      typeEffect(name, nameText, 35, () => {
+        typeEffect(role, roleText, 25);
+      });
+    });
   }
+});
+
+
+/* === BOTÓN VOLVER ARRIBA === */
+const backToTop = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add("visible");
+  } else {
+    backToTop.classList.remove("visible");
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
