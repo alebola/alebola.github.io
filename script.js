@@ -243,29 +243,21 @@ navLinks.forEach(link => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* === EFECTO DE ESCRITURA MEJORADO CON COLOR EN TIEMPO REAL === */
+/* === EFECTO DE ESCRITURA MEJORADO === */
 function typeEffect(element, text, delay = 50, callback) {
   element.textContent = "";
   element.classList.add("typing");
   let i = 0;
-
   function typing() {
     if (i < text.length) {
-      // Si estamos escribiendo el nombre completo
-      if (element.classList.contains("hero-name")) {
-        const splitIndex = text.indexOf("Bolaños García");
-        if (splitIndex !== -1 && i >= splitIndex) {
-          // Escribe la parte de los apellidos en cian mientras se escribe
-          const before = text.slice(0, splitIndex);
-          const current = text.slice(splitIndex, i + 1);
-          element.innerHTML = `${before}<span style="color:#00ffff">${current}</span>`;
+      if (element === name && text.startsWith("Alejandro")) {
+        if (i >= "Alejandro ".length) {
+          element.innerHTML += `<span style="color:#00ffff">${text.charAt(i)}</span>`;
         } else {
-          // Escribe la parte de "Alejandro " normal
-          element.textContent = text.slice(0, i + 1);
+          element.innerHTML += text.charAt(i);
         }
       } else {
-        // Efecto normal para las otras frases
-        element.textContent = text.slice(0, i + 1);
+        element.textContent += text.charAt(i);
       }
 
       i++;
@@ -275,10 +267,38 @@ function typeEffect(element, text, delay = 50, callback) {
       if (callback) setTimeout(callback, 300);
     }
   }
-
   typing();
 }
 
+window.addEventListener("load", () => {
+  const intro = document.querySelector("[data-key='hero-intro']");
+  const name = document.querySelector(".hero-name");
+  const nameSpan = name.querySelector("span");
+  const role = document.querySelector("[data-key='hero-role']");
+
+  // Guardar el texto original
+  const introText = intro.textContent.trim();
+  const nameText = name.textContent.trim();
+  const roleText = role.textContent.trim();
+
+  // Vaciar antes de animar
+  intro.textContent = "";
+  name.textContent = "";
+  role.textContent = "";
+
+  // Efecto progresivo
+  typeEffect(intro, introText, 45, () => {
+    typeEffect(name, nameText, 35, () => {
+      typeEffect(role, roleText, 25, () => {
+        // cuando termina de escribir el nombre, restaurar color del span
+        name.innerHTML = nameText.replace(
+          "Bolaños García",
+          `<span>Bolaños García</span>`
+        );
+      });
+    });
+  });
+});
 
 
 
