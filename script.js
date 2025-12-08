@@ -243,7 +243,7 @@ navLinks.forEach(link => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* === ANIMACIÓN HERO MEJORADA === */
+/* === EFECTO DE ESCRITURA MEJORADO === */
 function typeEffect(element, text, delay = 50, callback) {
   element.textContent = "";
   element.classList.add("typing");
@@ -255,7 +255,7 @@ function typeEffect(element, text, delay = 50, callback) {
       setTimeout(typing, delay);
     } else {
       element.classList.remove("typing");
-      if (callback) setTimeout(callback, 400);
+      if (callback) setTimeout(callback, 300);
     }
   }
   typing();
@@ -263,24 +263,34 @@ function typeEffect(element, text, delay = 50, callback) {
 
 window.addEventListener("load", () => {
   const intro = document.querySelector("[data-key='hero-intro']");
-  const firstName = document.querySelector(".first-name");
-  const lastName = document.querySelector(".last-name");
+  const name = document.querySelector(".hero-name");
+  const nameSpan = name.querySelector("span");
   const role = document.querySelector("[data-key='hero-role']");
 
-  const introText = intro?.textContent.trim() || "";
-  const firstNameText = firstName?.textContent.trim() || "";
-  const roleText = role?.textContent.trim() || "";
+  // Guardar el texto original
+  const introText = intro.textContent.trim();
+  const nameText = name.textContent.trim();
+  const roleText = role.textContent.trim();
 
+  // Vaciar antes de animar
   intro.textContent = "";
-  firstName.textContent = "";
+  name.textContent = "";
   role.textContent = "";
 
+  // Efecto progresivo
   typeEffect(intro, introText, 45, () => {
-    typeEffect(firstName, firstNameText, 35, () => {
-      typeEffect(role, roleText, 25);
+    typeEffect(name, nameText, 35, () => {
+      typeEffect(role, roleText, 25, () => {
+        // cuando termina de escribir el nombre, restaurar color del span
+        name.innerHTML = nameText.replace(
+          "Bolaños García",
+          `<span>Bolaños García</span>`
+        );
+      });
     });
   });
 });
+
 
 
 /* === BOTÓN VOLVER ARRIBA === */
