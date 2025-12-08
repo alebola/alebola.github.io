@@ -242,3 +242,28 @@ navLinks.forEach(link => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+/* === ANIMACIÓN HERO (typing effect) === */
+function typeEffect(element, text, delay = 50) {
+  element.textContent = "";
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typing, delay);
+    }
+  }
+  typing();
+}
+
+window.addEventListener("load", () => {
+  const intro = document.querySelector("[data-key='hero-intro']");
+  const role = document.querySelector("[data-key='hero-role']");
+
+  if (intro && role) {
+    typeEffect(intro, intro.textContent, 45);
+    setTimeout(() => typeEffect(role, role.textContent, 30), 1200);
+  }
+});
+
