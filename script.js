@@ -243,17 +243,19 @@ navLinks.forEach(link => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* === ANIMACIÓN HERO (efecto escritura completo y limpio) === */
+/* === ANIMACIÓN HERO MEJORADA === */
 function typeEffect(element, text, delay = 50, callback) {
   element.textContent = "";
+  element.classList.add("typing");
   let i = 0;
   function typing() {
     if (i < text.length) {
       element.textContent += text.charAt(i);
       i++;
       setTimeout(typing, delay);
-    } else if (callback) {
-      setTimeout(callback, 500);
+    } else {
+      element.classList.remove("typing");
+      if (callback) setTimeout(callback, 400);
     }
   }
   typing();
@@ -264,24 +266,19 @@ window.addEventListener("load", () => {
   const name = document.querySelector(".hero-name");
   const role = document.querySelector("[data-key='hero-role']");
 
-  // Guardamos los textos originales
   const introText = intro?.textContent.trim() || "";
   const nameText = name?.textContent.trim() || "";
   const roleText = role?.textContent.trim() || "";
 
-  // Limpiamos el contenido inicial para que empiece vacío
-  if (intro) intro.textContent = "";
-  if (name) name.textContent = "";
-  if (role) role.textContent = "";
+  intro.textContent = "";
+  name.textContent = "";
+  role.textContent = "";
 
-  // Efecto secuencial: intro → nombre → rol
-  if (intro && name && role) {
-    typeEffect(intro, introText, 45, () => {
-      typeEffect(name, nameText, 35, () => {
-        typeEffect(role, roleText, 25);
-      });
+  typeEffect(intro, introText, 45, () => {
+    typeEffect(name, nameText, 35, () => {
+      typeEffect(role, roleText, 25);
     });
-  }
+  });
 });
 
 

@@ -569,7 +569,6 @@ body {
   }
 }
 
-/* === BOTÓN VOLVER ARRIBA === */
 #back-to-top {
   position: fixed;
   bottom: 25px;
@@ -594,15 +593,9 @@ body {
   transform: translateY(0);
 }
 
-#back-to-top:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 12px rgba(123, 47, 247, 0.6);
-}
 
-/* === CURSOR PARPADEANTE === */
-.hero-text p.intro::after,
-.hero-text h1.hero-name::after,
-.hero-text h3.hero-role::after {
+/* === CURSOR PARPADEANTE MEJORADO === */
+.typing::after {
   content: "|";
   opacity: 1;
   animation: blink 0.8s infinite;
@@ -614,3 +607,4 @@ body {
   0%, 50%, 100% { opacity: 1; }
   25%, 75% { opacity: 0; }
 }
+
