@@ -59,10 +59,18 @@ function switchLanguage(lang) {
     }
   });
   renderProjects(lang);
+  document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(b => b.classList.add("active"));
 }
 
-document.getElementById("es-btn").addEventListener("click", () => switchLanguage("es"));
-document.getElementById("en-btn").addEventListener("click", () => switchLanguage("en"));
+// Soporte para múltiples botones de idioma
+document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.getAttribute("data-lang");
+    switchLanguage(lang);
+  });
+});
+
 
 /* === PARTICULAS EN EL HERO === */
 const canvas = document.getElementById("particles");
