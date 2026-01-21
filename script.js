@@ -10,7 +10,7 @@ const translations = {
     "hero-role": "Científico de Datos e Ingeniero de Machine Learning",
     "about-title": "Sobre mí",
     "about-desc":
-      "Soy graduado en Ciencia e Ingeniería de Datos, apasionado por la inteligencia artificial, el aprendizaje automático y las soluciones basadas en datos. Busco aplicar mis conocimientos en entornos reales y seguir creciendo profesionalmente.",
+      "Soy graduado en Ciencia e Ingeniería de Datos, apasionado por la inteligencia artificial, el aprendizaje automático y las soluciones basadas en datos. Actualmente formo parte del equipo de Orbalia como Consultor IT, donde participo en proyectos tecnológicos y continúo especializándome en el sector.",
     "skills-title": "Habilidades",
     "tech-skills-title": "Habilidades Técnicas",
     "soft-skills-title": "Habilidades Blandas",
@@ -34,7 +34,7 @@ const translations = {
     "hero-role": "Data Scientist & Machine Learning Engineer",
     "about-title": "About Me",
     "about-desc":
-      "I am a Data Science and Engineering graduate passionate about artificial intelligence, machine learning, and data-driven solutions. I aim to apply my skills in real-world settings while continuing to grow professionally.",
+      "I am a Data Science and Engineering graduate passionate about artificial intelligence, machine learning, and data-driven solutions. I currently work at Orbalia as a IT Consultant, contributing to tech projects and further developing my expertise in the industry.",
     "skills-title": "Skills",
     "tech-skills-title": "Technical Skills",
     "soft-skills-title": "Soft Skills",
